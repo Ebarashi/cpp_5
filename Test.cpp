@@ -21,9 +21,9 @@ TEST_CASE("TEST")
         CHECK_NOTHROW(org.add_sub("COO", "VP_BI"));
         vector<string> level_order = {"CEO" ,"CTO", "CFO", "COO" ,"VP_SW" ,"VP_BI"};
         size_t i = 0;
-        for (auto employ : org)
+        for (auto employee : org)
         {
-            CHECK_EQ(level_order[i], employ);
+            CHECK_EQ(level_order[i], employee);
             i++;
         }
     }
