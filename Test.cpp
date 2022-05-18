@@ -11,8 +11,6 @@ TEST_CASE("TEST")
 {
     OrgChart org;
 
-    SUBCASE("CREATE ORG_CHART")
-    {
         CHECK_NOTHROW(org.add_root("CEO")); 
         CHECK_NOTHROW(org.add_sub("CEO", "CTO"));
         CHECK_NOTHROW(org.add_sub("CEO", "CFO"));
@@ -26,17 +24,17 @@ TEST_CASE("TEST")
             CHECK_EQ(level_order[i], employee);
             i++;
         }
-    }
+}
 
-    SUBCASE("level_order")
+TEST_CASE("level_order")
     {
         OrgChart org2;
-        org2.add_root("CEO")
-            .add_sub("CEO", "CTO")
-            .add_sub("CEO", "CFO")
-            .add_sub("CEO", "COO")
-            .add_sub("CTO", "VP_SW")
-            .add_sub("COO", "VP_BI");
+        CHECK_NOTHROW(org2.add_root("CEO")); 
+        CHECK_NOTHROW(org2.add_sub("CEO", "CTO"));
+        CHECK_NOTHROW(org2.add_sub("CEO", "CFO"));
+        CHECK_NOTHROW(org2.add_sub("CEO", "COO"));
+        CHECK_NOTHROW(org2.add_sub("CTO", "VP_SW"));
+        CHECK_NOTHROW(org2.add_sub("COO", "VP_BI"));
 
         vector<string> checker = {"CEO", "CTO", "CFO", "COO", "VP_SW" ,"VP_BI"};
         size_t count = 0;
@@ -48,7 +46,7 @@ TEST_CASE("TEST")
 
     }
 
-    SUBCASE("reverse_order")
+TEST_CASE("reverse_order")
     {
         OrgChart org3;
 
@@ -68,7 +66,7 @@ TEST_CASE("TEST")
         }
     }
 
-    SUBCASE("pre_order")
+TEST_CASE("pre_order")
     {
         OrgChart org4;
 
@@ -97,7 +95,7 @@ TEST_CASE("TEST")
             count++;
         }
     }
-}
+
 
     
 
